@@ -4,6 +4,5 @@
   "editor.formatOnSave": true,
   "eslint.probe": ["javascript"],
   "jest.autoRun": "off",
-  "vetur.validation.template": false,
-  "liveServer.settings.port": 5501
+  "vetur.validation.template": false
 }
