@@ -58,7 +58,7 @@ nav {
 .profile-container {
   grid-area: profile;
   text-align: center;
-  background-color: #3f8d4d;
+  background-color: #0075c8;
   color: #ffffff;
   border-radius: 25px;
   padding: 25px;
@@ -190,7 +190,7 @@ nav {
   padding: 15px;
   border-radius: 5px;
   border: 0;
-  background-color: #3f8d4d;
+  background-color: #0075c8;
   color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -386,6 +386,11 @@ footer .footer-right {
 /**
  * Radio and Checkbox Styling
  */
+input[type="checkbox"]:disabled + label > span {
+  background: #cccccc; /* Set the background color for disabled checkboxes */
+  border-color: #999999; /* Set the border color for disabled checkboxes */
+  cursor: not-allowed; /* Change the cursor to indicate unselectable */
+}
 input[type="checkbox"]:not(old),
 input[type="radio"]:not(old) {
   width: 2em;
