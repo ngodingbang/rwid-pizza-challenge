@@ -1,4 +1,5 @@
 import { Collection } from "./Collection.js";
+import { Price } from "./Price.js";
 import { Topping } from "./Topping.js";
 
 /**
@@ -20,5 +21,18 @@ export class Toppings extends Collection {
   static create(collection) {
     // @ts-ignore
     return Collection.create(collection, Topping);
+  }
+
+  /**
+   * @param {Price["currency"]} currency
+   */
+  calculatePrice(currency) {
+    currency = Price.getDefaultCurrency(currency);
+
+    return this.reduce(
+      (total, currentTopping) =>
+        total + currentTopping.prices.getValueFromCurrency(currency),
+      0
+    );
   }
 }
