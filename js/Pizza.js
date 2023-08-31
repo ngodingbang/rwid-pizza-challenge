@@ -1,4 +1,3 @@
-import configurations from "../database/configurations.js";
 import { Data } from "./Data.js";
 import { PizzaSize } from "./PizzaSize.js";
 import { PizzaSizes } from "./PizzaSizes.js";
@@ -52,13 +51,13 @@ export class Pizza extends Data {
    * @type {Toppings}
    * @protected
    */
-  allowedToppings = [];
+  allowedToppings;
 
   /**
    * @type {Toppings}
    * @protected
    */
-  toppings = [];
+  toppings;
 
   /**
    * @param {Json} data
@@ -176,18 +175,15 @@ export class Pizza extends Data {
    * @param {Price["currency"]} currency
    */
   calculatePrice(currency) {
-    currency ||= String(
-      configurations.find(configuration => configuration.key === "currency")
-        ?.value || "USD"
-    );
-
-    Price.isCurrencyAllowed(currency);
+    currency = Price.getDefaultCurrency(currency);
 
     let total = this.prices.getValueFromCurrency(currency);
 
     if (this.size !== undefined) {
       total += this.size.prices.getValueFromCurrency(currency);
     }
+
+    total += this.toppings.calculatePrice(currency);
 
     return total;
   }
