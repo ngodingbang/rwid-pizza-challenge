@@ -1,3 +1,4 @@
+import configurations from "../database/configurations.js";
 import { Data } from "./Data.js";
 
 /**
@@ -9,6 +10,9 @@ import { Data } from "./Data.js";
 export class Price extends Data {
   /** @type {Array<Price["currency"]>} */
   static allowedCurrency = ["USD", "IDR"];
+
+  /** @type {Price["currency"]} */
+  static defaultCurrency = "USD";
 
   /** @type {Json["currency"]} */
   currency;
@@ -36,6 +40,25 @@ export class Price extends Data {
    */
   static create(data) {
     return Data.create(data);
+  }
+
+  /**
+   * @param {string} [currency]
+   * @param {boolean} [throwError=true]
+   */
+  static getDefaultCurrency(currency, throwError = true) {
+    currency = String(
+      currency ||
+        configurations.find(configuration => configuration.key === "currency")
+          ?.value ||
+        this.defaultCurrency
+    );
+
+    if (!this.isCurrencyAllowed(currency, throwError)) {
+      return this.defaultCurrency;
+    }
+
+    return currency;
   }
 
   /**
