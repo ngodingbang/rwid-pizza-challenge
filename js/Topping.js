@@ -42,7 +42,7 @@ export class Topping extends Data {
   }
 
   /**
-   * @param {Topping | Json} data
+   * @param {Topping & Json} data
    */
   static create(data) {
     return Data.create(data);

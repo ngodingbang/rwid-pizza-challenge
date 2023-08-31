@@ -1,11 +1,11 @@
 /**
  * @abstract
- * @template T
+ * @template {{ }} T
  * @extends {Array<T>}
  */
 export class Collection extends Array {
   /**
-   * @param {Array<T> | Array<Object>} collection
+   * @param {Array<T>} collection
    * @param {Object} dataClass
    */
   constructor(collection, dataClass) {
@@ -23,8 +23,9 @@ export class Collection extends Array {
   }
 
   /**
-   * @param {Collection | Array<Object> | Object} collection
+   * @param {Collection<{ }> & Array<{ }>} collection
    * @param {Object} dataClass
+   * @throws {Error}
    */
   static create(collection, dataClass) {
     if (

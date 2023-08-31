@@ -42,7 +42,7 @@ export class PizzaSize extends Data {
   }
 
   /**
-   * @param {PizzaSize | Json} data
+   * @param {PizzaSize & Json} data
    */
   static create(data) {
     return Data.create(data);

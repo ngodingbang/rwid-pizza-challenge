@@ -3,9 +3,9 @@
  */
 export class Data {
   /**
-   * @abstract
    * @param {Object} data
    * @param {Object} dataClass
+   * @throws {Error}
    */
   static create(data, dataClass) {
     if (data instanceof dataClass) {

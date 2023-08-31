@@ -7,16 +7,18 @@ import { Price } from "./Price.js";
  */
 export class Prices extends Collection {
   /**
-   * @param {Array<Price> | Json} collection
+   * @param {Array<Price> & Json} collection
    */
   constructor(collection) {
     super(collection, Price);
   }
 
   /**
-   * @param {Prices | Array<Price> | Json} collection
+   * @param {Prices & Array<Price> & Json} collection
+   * @returns {Prices}
    */
   static create(collection) {
+    // @ts-ignore
     return Collection.create(collection, Price);
   }
 

@@ -32,7 +32,7 @@ export class Price extends Data {
   }
 
   /**
-   * @param {Price | Json} data
+   * @param {Price & Json} data
    */
   static create(data) {
     return Data.create(data);
@@ -41,6 +41,7 @@ export class Price extends Data {
   /**
    * @param {string} currency
    * @param {boolean} [throwError=true]
+   * @throws {Error}
    */
   static isCurrencyAllowed(currency, throwError = true) {
     const isAllowed = Price.allowedCurrency.includes(currency);
@@ -57,6 +58,7 @@ export class Price extends Data {
   /**
    * @param {*} value
    * @param {boolean} [throwError=true]
+   * @throws {Error}
    */
   static isValueAllowed(value, throwError = true) {
     const isAllowed = !Number.isNaN(value);

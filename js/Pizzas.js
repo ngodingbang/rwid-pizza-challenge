@@ -7,16 +7,18 @@ import { Pizza } from "./Pizza.js";
  */
 export class Pizzas extends Collection {
   /**
-   * @param {Array<Pizza> | Json} collection
+   * @param {Array<Pizza> & Json} collection
    */
   constructor(collection) {
     super(collection, Pizza);
   }
 
   /**
-   * @param {Pizzas | Array<Pizza> | Json} collection
+   * @param {Pizzas & Array<Pizza> & Json} collection
+   * @returns {Pizzas}
    */
   static create(collection) {
+    // @ts-ignore
     return Collection.create(collection, Pizza);
   }
 }

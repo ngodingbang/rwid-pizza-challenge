@@ -77,7 +77,8 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Pizza | Json} data
+   * @param {Pizza & Json} data
+   * @throws {Error}
    */
   static create(data) {
     if (data instanceof this) {
@@ -92,7 +93,7 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Pizza["allowedSizes"] | Array<PizzaSize> | Array<import("./PizzaSize.d.ts").Json>} sizes
+   * @param {Pizza["allowedSizes"] & Array<PizzaSize> & Array<import("./PizzaSize.d.ts").Json>} sizes
    */
   setAllowedSizes(sizes) {
     this.allowedSizes = PizzaSizes.create(sizes);
@@ -101,7 +102,7 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Pizza["size"] | import("./PizzaSize.d.ts").Json} size
+   * @param {Pizza["size"] & import("./PizzaSize.d.ts").Json} size
    */
   setSize(size) {
     this.isSizeAllowed(size);
@@ -112,7 +113,7 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Pizza["allowedToppings"] | Array<Topping> | Array<import("./Topping.d.ts").Json>} toppings
+   * @param {Pizza["allowedToppings"] & Array<Topping> & Array<import("./Topping.d.ts").Json>} toppings
    */
   setAllowedToppings(toppings) {
     this.allowedToppings = Toppings.create(toppings);
@@ -121,7 +122,7 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Topping | import("./Topping.d.ts").Json} topping
+   * @param {Topping & import("./Topping.d.ts").Json} topping
    */
   addTopping(topping) {
     this.isToppingAllowed(topping);
@@ -132,7 +133,8 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {PizzaSize | import("./PizzaSize.d.ts").Json} size
+   * @param {PizzaSize & import("./PizzaSize.d.ts").Json} size
+   * @throws {Error}
    */
   isSizeAllowed(size, throwError = true) {
     size = PizzaSize.create(size);
@@ -151,7 +153,8 @@ export class Pizza extends Data {
   }
 
   /**
-   * @param {Topping | import("./Topping.d.ts").Json} topping
+   * @param {Topping & import("./Topping.d.ts").Json} topping
+   * @throws {Error}
    */
   isToppingAllowed(topping, throwError = true) {
     topping = Topping.create(topping);

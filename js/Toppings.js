@@ -7,16 +7,18 @@ import { Topping } from "./Topping.js";
  */
 export class Toppings extends Collection {
   /**
-   * @param {Array<Topping> | Json} collection
+   * @param {Array<Topping> & Json} collection
    */
   constructor(collection) {
     super(collection, Topping);
   }
 
   /**
-   * @param {Toppings | Array<Topping> | Json} collection
+   * @param {Toppings & Array<Topping> & Json} collection
+   * @returns {Toppings}
    */
   static create(collection) {
+    // @ts-ignore
     return Collection.create(collection, Topping);
   }
 }
